@@ -1,0 +1,17 @@
+[
+    {
+        "id" : 1,
+        "title" : "Design" ,
+        "body" : "Perencanaan struktur dan arsitektur bangunan"
+    },
+    {
+        "id" : 2,
+        "title" : "Construction" ,
+        "body" : "Pembangunan struktur dan arsitektur bangunan"
+    },
+    {
+        "id" : 3,
+        "title" : "Maintenance" ,
+        "body" : "Perbaikan struktur dan arsitektur bangunan"
+    }
+]
