@@ -1,21 +1,33 @@
 //const user = [];
 const dbUser = require('../db/user.json');
 const fs = require('fs')
+const db = require('../db')
 
 
 
 class UserController {
 
-    // 1. MELIHAT LIST USER (BISA DIJALANKAN DARI BROWSER DAN POSTMAN)
-    static showListUser (req, res) {
-        try {
-            const dbUserString = fs.readFileSync('./db/user.json')
-            const dbUser = JSON.parse(dbUserString)
-            res.status(200).json(dbUser)
+    // 1. MELIHAT LIST USER (DARI DATABASE)
+    static async showListUser (req, res) {
+        try{
+            const dataUser = await db('user').select('*')
+            res.status(200).json(dataUser)
         } catch (error) {
             res.status(500).json(error)
         }
         
+    // MELIHAT LIST USER (BISA INPUT DATA DARI BROWSER DAN POSTMAN ===> BELUM PAKAI DATABASE)
+    // static showListUser (req, res) {   
+    //     try {
+    //         const dbUserString = fs.readFileSync('./db/user.json')
+    //         const dbUser = JSON.parse(dbUserString)
+    //         res.status(200).json(dbUser)
+    //     } catch (error) {
+    //         res.status(500).json(error)
+    //     }
+        
+
+
         // let dataUser = {
         //     'list_user' : user
         // }
@@ -28,32 +40,46 @@ class UserController {
         res.render('registerform')
     }
 
-    // 3. FITUR REGISTER, MENYIMPAN DATA KE DB (BISA INPUT DATA DARI BROWSER DAN POSTMAN)
-    static register(req, res) {
+    // 3. FITUR REGISTER, MENYIMPAN DATA KE DATABASE
+    static async register(req, res) {
         try {
-            const { username, fullName, email, phoneNumber, adress, password } = req.body
+            const { name, password, email, phoneNumber, address, role } = req.body
+            const inputUser = {
+                name,
+                password,
+                email,
+                phone_number: phoneNumber,
+                address,
+                role,
+                created_at : new Date(),
+                updated_at : new Date()
+            } 
+            const data = await db('user').insert(inputUser).returning('*');
 
+
+            // SEBELUM PAKAI DATABASE
             // a. cara ini bisa dipakai kalau tidak ada fitur delete user,
             // tapi jika ada fitur delete user maka setelah delete data dan post data baru, maka id akan ada yg double
             // let id = dbUser.dataUser.length + 1;
 
             // b. cara sesuai last data id
-            const dbUserString = fs.readFileSync('./db/user.json')
-            const dbUser = JSON.parse(dbUserString)
-            console.log(dbUser);
+            // const dbUserString = fs.readFileSync('./db/user.json')
+            // const dbUser = JSON.parse(dbUserString)
+            // console.log(dbUser);
 
-            let id = 1;
-            if (dbUser.dataUser.length > 0) {
-                id = dbUser.dataUser[dbUser.dataUser.length -1].id + 1
-            }
-            // console.log(id, '=======> cek id');
+            // let id = 1;
+            // if (dbUser.dataUser.length > 0) {
+            //     id = dbUser.dataUser[dbUser.dataUser.length -1].id + 1
+            // }
+            // // console.log(id, '=======> cek id');
 
-            dbUser.dataUser.push({ id, username, fullName, email, phoneNumber, adress, password })
-            console.log(`register dengan nama ${username} berhasil!`);
+            // dbUser.dataUser.push({ id, username, fullName, email, phoneNumber, adress, password })
+            // console.log(`register dengan nama ${username} berhasil!`);
         
-            fs.writeFileSync('./db/user.json', JSON.stringify(dbUser))
+            // fs.writeFileSync('./db/user.json', JSON.stringify(dbUser))
             res.status(201).send({
-                message: 'register berhasil!'
+                message: 'register berhasil!',
+                data
             })
             } catch (error) {
                 res.status(500).json (error)
