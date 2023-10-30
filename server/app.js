@@ -4,6 +4,7 @@ const port = process.env.port || 3000;
 const routes = require('./routes')
 const datas = require('./db/data.json')
 const fs = require ('fs')
+const db = require('./db')
 //const datas2 = fs.readFileSync('./db/data.json', utf-8)
 
 app.use(express.json()) 

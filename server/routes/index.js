@@ -1,11 +1,14 @@
 const express = require ('express')
 const routes = express.Router()
 const userRoutes = require('./userRoutes')
+const db = require('../db')
 
-routes.get("/", (req, res) => {
+routes.get("/", async (req, res) => {
+    const data = await db.select('*').from('employees')
+    console.log(data);
     const json = {
         status : 'ok',
-        data :'Hello World!'
+        data : data
     }
     res.send(json)
 })
