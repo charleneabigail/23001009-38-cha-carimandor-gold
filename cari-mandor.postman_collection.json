@@ -54,33 +54,33 @@
 					"mode": "urlencoded",
 					"urlencoded": [
 						{
-							"key": "username",
-							"value": "abigail",
-							"type": "text"
-						},
-						{
-							"key": "fullName",
-							"value": "Abigail Abel",
-							"type": "text"
-						},
-						{
-							"key": "email",
-							"value": "abigail@mail.com",
-							"type": "text"
-						},
-						{
-							"key": "phoneNumber",
-							"value": "0812345678",
-							"type": "text"
-						},
-						{
-							"key": "adress",
-							"value": "Jimbaran",
+							"key": "name",
+							"value": "Wawan",
 							"type": "text"
 						},
 						{
 							"key": "password",
-							"value": "09876",
+							"value": "pppp",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "wawan@mail.com",
+							"type": "text"
+						},
+						{
+							"key": "phoneNumber",
+							"value": "081010101010",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "Jalan Kayu Manis",
+							"type": "text"
+						},
+						{
+							"key": "role",
+							"value": "customer",
 							"type": "text"
 						}
 					]
@@ -108,13 +108,13 @@
 					"mode": "urlencoded",
 					"urlencoded": [
 						{
-							"key": "username",
-							"value": "charleneabigail",
+							"key": "email",
+							"value": "wawan@mail.com",
 							"type": "text"
 						},
 						{
 							"key": "password",
-							"value": "12345",
+							"value": "pppp",
 							"type": "text"
 						}
 					]
@@ -139,6 +139,74 @@
 							"key": "",
 							"value": "",
 							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit User",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nama",
+							"value": "Wawan",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "pppp",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "wawan@mail.com",
+							"type": "text"
+						},
+						{
+							"key": "phoneNumber",
+							"value": "08101010101010",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "Jalan Kayu Manis No 21",
+							"type": "text"
+						},
+						{
+							"key": "role",
+							"value": "customer",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/user/edit-user/:id",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"edit-user",
+						":id"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1",
+							"disabled": true
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "9"
 						}
 					]
 				}
@@ -185,7 +253,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "1"
+							"value": "9"
 						}
 					]
 				}
@@ -193,7 +261,95 @@
 			"response": []
 		},
 		{
-			"name": "Edit User",
+			"name": "Get List Services",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/service/list-services",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"service",
+						"list-services"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Service",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_seller",
+							"value": "7",
+							"type": "text"
+						},
+						{
+							"key": "title",
+							"value": "Maju Jaya construction",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Kami melayani segala keperluan konstruksi untuk bangunan anda",
+							"type": "text"
+						},
+						{
+							"key": "status",
+							"value": "borongan",
+							"type": "text"
+						},
+						{
+							"key": "category",
+							"value": "construction",
+							"type": "text"
+						},
+						{
+							"key": "sub_category",
+							"value": "structure",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "3500000",
+							"type": "text"
+						},
+						{
+							"key": "photo",
+							"value": "zzzzzz",
+							"type": "text"
+						},
+						{
+							"key": "link_portofolio",
+							"value": "zzzzzz",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/service",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"service"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Service",
 			"request": {
 				"method": "PUT",
 				"header": [],
@@ -201,46 +357,67 @@
 					"mode": "urlencoded",
 					"urlencoded": [
 						{
-							"key": "username",
-							"value": "abigailabel",
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "id_seller",
+							"value": "7",
 							"type": "text"
 						},
 						{
-							"key": "fullName",
-							"value": "Abigail Abel",
+							"key": "title",
+							"value": "Maju Jaya construction",
 							"type": "text"
 						},
 						{
-							"key": "email",
-							"value": "abigail@mail.com",
+							"key": "description",
+							"value": "Kami melayani segala keperluan konstruksi untuk bangunan anda",
 							"type": "text"
 						},
 						{
-							"key": "phoneNumber",
-							"value": "08123456789",
+							"key": "status",
+							"value": "borongan",
 							"type": "text"
 						},
 						{
-							"key": "adress",
-							"value": "Jimbaran",
+							"key": "category",
+							"value": "construction",
 							"type": "text"
 						},
 						{
-							"key": "password",
-							"value": "asdfghjk",
+							"key": "sub_category",
+							"value": "architecture",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "2000000",
+							"type": "text"
+						},
+						{
+							"key": "photo",
+							"value": "zzz",
+							"type": "text"
+						},
+						{
+							"key": "link_portofolio",
+							"value": "zzz",
 							"type": "text"
 						}
 					]
 				},
 				"url": {
-					"raw": "localhost:3000/user/edit-user/:id",
+					"raw": "localhost:3000/service/update-service/:id",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"user",
-						"edit-user",
+						"service",
+						"update-service",
 						":id"
 					],
 					"query": [
@@ -253,8 +430,597 @@
 					"variable": [
 						{
 							"key": "id",
+							"value": "8"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Service By ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/service/delete-service/:id?id_seller=7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"service",
+						"delete-service",
+						":id"
+					],
+					"query": [
+						{
+							"key": "id_seller",
+							"value": "7"
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "8"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Wishlist",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/wishlist/show-wishlist/:id",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"wishlist",
+						"show-wishlist",
+						":id"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
 							"value": "1"
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Wishlist",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_seller",
+							"value": "6",
+							"type": "text"
+						},
+						{
+							"key": "id_customer",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "id_service",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "total_price",
+							"value": "200000000",
+							"type": "text"
+						},
+						{
+							"key": "note_from_customer",
+							"value": "start construction tgl 1 desember 2023",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/wishlist/add-wishlist",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"wishlist",
+						"add-wishlist"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Wishlist",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_seller",
+							"value": "6",
+							"type": "text"
+						},
+						{
+							"key": "id_customer",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "id_service",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "total_price",
+							"value": "220000000",
+							"type": "text"
+						},
+						{
+							"key": "note_from_customer",
+							"value": "start construction tgl 1 desember 2023",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/wishlist/update-wishlist/:id",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"wishlist",
+						"update-wishlist",
+						":id"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1",
+							"disabled": true
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Wishlist By ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/wishlist/delete-wishlist/:id?id_customer=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"wishlist",
+						"delete-wishlist",
+						":id"
+					],
+					"query": [
+						{
+							"key": "id_customer",
+							"value": "1"
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Transaction",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/transaction/show-transaction/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"transaction",
+						"show-transaction",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Transaction",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_seller",
+							"value": "6",
+							"type": "text"
+						},
+						{
+							"key": "id_customer",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "id_service",
+							"value": "7",
+							"type": "text"
+						},
+						{
+							"key": "total_price",
+							"value": "30000000",
+							"type": "text"
+						},
+						{
+							"key": "note_from_customer",
+							"value": "start construction tgl 31 november 2023",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/transaction/add-transaction",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"transaction",
+						"add-transaction"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Status Payment Success",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_transaction",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/transaction/status-payment-success",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"transaction",
+						"status-payment-success"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Status Payment Failed",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_transaction",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/transaction/status-payment-failed",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"transaction",
+						"status-payment-failed"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Canceled by customer",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "id_customer",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/transaction/canceled-by-customer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"transaction",
+						"canceled-by-customer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Canceled by seller",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "4",
+							"type": "text"
+						},
+						{
+							"key": "id_seller",
+							"value": "6",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/transaction/canceled-by-seller",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"transaction",
+						"canceled-by-seller"
 					]
 				}
 			},

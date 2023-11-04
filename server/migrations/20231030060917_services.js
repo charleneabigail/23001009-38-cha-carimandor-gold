@@ -7,7 +7,7 @@ exports.up = function(knex) {
     return knex.schema.createTable('services', (table) => {
         // tabel services (id, id seller, title, description, status, category, sub category, price, photo, link portofolio)
         table.increments('id').primary()
-        table.integer('id_seller').notNullable().references('id').inTable('user');
+        table.integer('id_seller').notNullable().references('id').inTable('user').onDelete('CASCADE');
         table.string('title');
         table.text('description');
         table.enu('status', ['harga satuan', 'borongan']);
