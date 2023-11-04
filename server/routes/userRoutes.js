@@ -23,7 +23,7 @@ routes.get('/show-user', UserController.showListUser);
 
 routes.put('/edit-user/:id', UserController.editUser)
 
-routes.delete('/delete-all-user', UserController.deleteAllUser)
+// routes.delete('/delete-all-user', UserController.deleteAllUser)
 
 routes.delete('/deleteuserbyid/:id', UserController.deleteUserById)
 
