@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cari Mandor</title>
+
+    <!-- BOOTSTRAP -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <!-- CSS -->
+    <link rel="stylesheet" href="/public/style.css" />
+  </head>
+  <body>
+    <!-- NAVBAR START -->
+    <nav
+      class="navbar navbar-expand-lg navbar-dark bg-dark shadow-lg sticky-top"
+    >
+      <div class="container">
+        <a class="navbar-brand" href="#"><h2>Cari Mandor</h2></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Tentang Kami</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Jasa</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Kontak</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- NAVBAR END -->
+
+    <section class="container search-page mt-5">
+      <div>
+        <% for (let i = 0; i < dataServices.length; i++) { %>
+        <div class="card card-body mb-5 bg-cm">
+          <div class="d-flex gap-5">
+            <div class="thumbnail">
+              <div>
+                <img
+                  src="<%= dataServices[i].photo %>"
+                  class="object-fit-cover"
+                  alt=""
+                />
+              </div>
+            </div>
+
+            <div class="card-body">
+              <h1 class="card-title"><%= dataServices[i].title %></h1>
+
+              <p class="card-text"><%= dataServices[i].category %></p>
+              <p class="card-text"><%= dataServices[i].sub_category %></p>
+              <p class="card-text">
+                <%= dataServices[i].status %> : <%= dataServices[i].price %>
+              </p>
+              <div class="d-flex gap-3 flex-wrap">
+                <a
+                  class="btn btn-warning"
+                  href="<% dataServices[i].link_portofolio %>"
+                  >Portofolio</a
+                >
+
+                <a
+                  class="btn btn-warning"
+                  href="/wishlistpage/add-wishlist-result/<%= dataServices[i].id %>"
+                  >Tambahkan ke wishlist</a
+                >
+                <a
+                  class="btn btn-warning"
+                  href="/transactionpage/add-transaction-form/<%= dataServices[i].id %>"
+                  >Buat transaksi</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </section>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

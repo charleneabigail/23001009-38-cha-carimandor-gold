@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cari Mandor</title>
+  </head>
+  <body>
+    <ol>
+      <% for (let i = 0; i < myWishlist.length; i++) { %>
+      <li>
+        <h1><%= myWishlist[i].title %></h1>
+        <a href="/wishlistpage/delete-wishlist-result/<%= myWishlist[i].id %>"
+          >Hapus wishlist</a
+        >
+      </li>
+      <% } %>
+    </ol>
+  </body>
+</html>

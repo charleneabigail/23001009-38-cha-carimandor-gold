@@ -7,11 +7,14 @@ class ServiceController {
     static async showListServices(req, res) {
         try {
             const dataServices = await db('services').select('*');
-            return res.status(200).json(dataServices);
+            res.status(200).json(dataServices); //return bisa dihapus karena langsung respon
+            // res.render('servicePage', {dataServices})
         } catch (error) {
-            return res.status(500).json(error)
+            res.status(500).json(error)
         }
     }
+    // pakai res.render =======> dibuat di PAGE CONTROLLER
+
 
     // 2. MENAMBAHKAN SERVICE (MENYIMPAN DATA KE DATABASE)
     static async addService(req, res) {
@@ -81,12 +84,12 @@ class ServiceController {
                 data,
             });
         } catch (error) {
-           return res.status(500).json(error)
+            res.status(500).json(error)
         }
     }
 
     // 4. MENGHAPUS SERVICE DARI DATABASE
-    // bagaimana cara handle supaya hanya seller yg membuat service yang bisa menghapus servicenya?
+    // bagaimana cara handle supaya hanya seller yg membuat service yang bisa menghapus servicenya? NANTI DI SETTING DI FRONTEND
     static async deleteService(req, res) {
         try {
             let id = req.params.id;
@@ -105,9 +108,10 @@ class ServiceController {
                 data
             });
         } catch (error) {
-            return res.status(500).json(error);
+            res.status(500).json(error);
         }
     }
+
 
 }
 

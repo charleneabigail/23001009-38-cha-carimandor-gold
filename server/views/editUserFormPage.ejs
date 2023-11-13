@@ -1,15 +1,15 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Register Form</title>
+    <title>Cari Mandor</title>
   </head>
   <body>
-    <h1>Register Page</h1>
+    <h1>Edit Profile User Page</h1>
 
-    <form action="/user/register" method="POST">
-      <label>name :</label>
+    <form action="/userpage/edit-user-result/<%= id %>" method="POST">
+      <%= id %>
+      <label>Name :</label>
       <input type="text" name="name" />
       <br /><br />
 
@@ -30,10 +30,13 @@
       <br /><br />
 
       <label>Role :</label>
-      <input type="text" name="role" />
+      <select name="role">
+        <option value="customer">Customer</option>
+        <option value="seller">Seller</option>
+      </select>
       <br /><br />
 
-      <input type="submit" value="register" />
+      <input type="submit" value="update profile" />
     </form>
   </body>
 </html>
