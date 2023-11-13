@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const session = require('express-session');
 const port = process.env.port || 3000;
 const routes = require('./routes')
 const datas = require('./db/data.json')
@@ -7,9 +8,11 @@ const fs = require ('fs')
 const db = require('./db')
 //const datas2 = fs.readFileSync('./db/data.json', utf-8)
 
+app.use(session({ secret: 'keyboard cat', cookie: { secure : false, maxAge: 60000 * 60 * 24 * 30 }}))
+
 app.use(express.json()) 
 app.use(express.urlencoded({extended: true}))
-app.use('/static', express.static('public'))
+app.use('/public', express.static('public'))
 
 app.set('view engine', 'ejs')
 

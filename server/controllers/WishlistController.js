@@ -16,7 +16,7 @@ class WishlistController {
             return res.status(200).json(dataWishlist);
             
         } catch (error) {
-            return res.status(500).json(error)
+            res.status(500).json(error)
         }
     }
 
@@ -55,7 +55,7 @@ class WishlistController {
                 data
             })
         } catch (error) {
-            return res.status(500).json(error)
+            res.status(500).json(error)
         }
     }
 
@@ -86,7 +86,7 @@ class WishlistController {
                 data,
             });
         } catch (error) {
-            return res.status(500).json(error)
+            res.status(500).json(error)
         }
     }
 
@@ -109,7 +109,7 @@ class WishlistController {
                 data
             });
         } catch (error) {
-            return res.status(500).json(error)
+            res.status(500).json(error)
         }
     }
 }

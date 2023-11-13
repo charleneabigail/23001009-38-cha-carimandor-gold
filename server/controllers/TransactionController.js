@@ -16,7 +16,7 @@ class TransactionController {
             const dataTransaction = await db('transactions').select('*');
             return res.status(200).json(dataTransaction);
         } catch (error) {
-            return res.status(500).json(error)
+            res.status(500).json(error)
         }
     }
 
@@ -64,7 +64,7 @@ class TransactionController {
             
 
         } catch (error) {
-            return res.status(500).json(error)
+            res.status(500).json(error)
         }
     }
 
@@ -84,7 +84,7 @@ class TransactionController {
             })
 
         } catch(error) {
-            return res.status(500).json(error)
+            res.status(500).json(error)
         }
     }
 
@@ -104,7 +104,7 @@ class TransactionController {
             })
 
         } catch(error) {
-            return res.status(500).json(error)
+            res.status(500).json(error)
         }
     }
 

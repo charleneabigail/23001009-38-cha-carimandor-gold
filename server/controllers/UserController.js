@@ -9,7 +9,7 @@ class UserController {
       const dataUser = await db("user").select("*");
       return res.status(200).json(dataUser);
     } catch (error) {
-      return res.status(500).json(error);
+      res.status(500).json(error);
     }
   }
 
@@ -39,7 +39,7 @@ class UserController {
         data,
       });
     } catch (error) {
-      return res.status(500).json(error);
+      res.status(500).json(error);
     }
   }
 
@@ -84,7 +84,7 @@ class UserController {
         });
       }
     } catch (error) {
-      return res.status(500).json(error);
+      res.status(500).json(error);
     }
   }
 
@@ -116,7 +116,7 @@ class UserController {
         data,
       });
     } catch (error) {
-      return res.status(500).json(error);
+      res.status(500).json(error);
     }
   }
 
@@ -134,9 +134,11 @@ class UserController {
       });
       
     } catch (error) {
-      return res.status(500).json(error);
+      res.status(500).json(error);
     }
   }
+
+    
 }
 
 module.exports = UserController;
