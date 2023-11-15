@@ -17,12 +17,10 @@
   <body>
     <!-- NAVBAR START -->
     <nav
-      class="navbar navbar-expand-lg navbar-dark bg-dark shadow-lg mb-4 sticky-top"
+      class="navbar navbar-expand-lg navbar-dark bg-dark shadow-lg sticky-top"
     >
       <div class="container">
-        <a class="navbar-brand" href="#">
-          <h2>Cari Mandor</h2>
-        </a>
+        <a class="navbar-brand" href="#"><h2>Cari Mandor</h2></a>
         <button
           class="navbar-toggler"
           type="button"
@@ -58,17 +56,21 @@
       </div>
     </nav>
     <!-- NAVBAR END -->
-
     <div class="container">
-      <% if(isSuccess){ %>
-      <!-- LOGO / ICON BERHASIL -->
-      <img style="height: 300px; width: 300px" src="/public/oke.png" />
-      <h1><%= message %></h1>
-      <% } else{ %>
-      <img style="height: 300px; width: 300px" src="/public/failed.png" />
-      <!-- LOGO / ICON GAGAL -->
-      <h1><%= message %></h1>
-      <% } %>
+      <h1>Jasa Saya :</h1>
+      <ol>
+        <% for (let i = 0; i < myServices.length; i++) { %>
+        <li>
+          <h1><%= myServices[i].title %></h1>
+        </li>
+        <a href="/servicepage/update-service/<%= myServices[i].id %>"
+          >Edit service</a
+        >
+        <a href="/servicepage/delete-service-result/<%= myServices[i].id %>"
+          >Hapus service</a
+        >
+        <% } %>
+      </ol>
     </div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

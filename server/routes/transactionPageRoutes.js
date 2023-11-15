@@ -6,4 +6,6 @@ routes.post('/add-transaction-result/:id_service', TransactionPageController.add
 
 routes.get('/add-transaction-form/:id', TransactionPageController.addTransactionForm)
 
+routes.get('/show-my-transaction', TransactionPageController.showMyTransaction)
+
 module.exports = routes

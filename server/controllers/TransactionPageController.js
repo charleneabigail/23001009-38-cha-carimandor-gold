@@ -97,6 +97,28 @@ class TransactionPageController {
       });
     }
   }
+  
+  // 3. MENAMPILKAN TRANSAKSI SAYA
+  static async showMyTransaction(req, res) {
+    try {
+      const myTransaction = await db("transactions")
+      .select(['transactions.id', 'services.title'])
+      .join('services', 'transactions.id_service', '=', 'services.id')
+      .where({'transactions.id_customer': req.session.user.id})
+      console.log(myTransaction, '=====> myTransaction');
+      res.render('showMyTransactionPage', {myTransaction})
+    } catch (error) {
+      res.render('showMyTransactionPage', {
+        isSuccess: false,
+        message: 'Internal server error'
+      })
+    }
+  }
+  
+  
 }
+
+
+
 
 module.exports = TransactionPageController;
