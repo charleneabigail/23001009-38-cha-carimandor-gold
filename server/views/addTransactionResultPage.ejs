@@ -15,7 +15,51 @@
     <link rel="stylesheet" href="/public/style.css" />
   </head>
   <body>
-    <div class="container">
+    <!-- NAVBAR START -->
+    <nav
+      class="navbar navbar-expand-lg navbar-dark bg-dark shadow-lg mb-4 sticky-top"
+    >
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <h2>Cari Mandor</h2>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="/userpage/landing-page"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Tentang Kami</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Jasa</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Kontak</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- NAVBAR END -->
+
+    <div class="container d-flex flex-column align-items-center">
       <% if(isSuccess){ %>
       <!-- LOGO / ICON BERHASIL -->
       <img style="height: 300px; width: 300px" src="/public/oke.png" />
@@ -25,6 +69,15 @@
       <!-- LOGO / ICON GAGAL -->
       <h1><%= message %></h1>
       <% } %>
+
+      <div>
+        <a href="/transactionpage/show-my-transaction" class="btn btn-warning"
+          >Lihat daftar transaksi saya</a
+        >
+        <a href="/search/search-list-services" class="btn btn-warning"
+          >Lihat semua jasa</a
+        >
+      </div>
     </div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
