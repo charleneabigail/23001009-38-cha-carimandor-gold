@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cari Mandor</title>
     <!-- BOOTSTRAP -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
@@ -19,16 +18,16 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
       rel="stylesheet"
     />
+
+    <title>Cari Mandor</title>
   </head>
   <body>
     <!-- NAVBAR START -->
     <nav
-      class="navbar navbar-expand-lg navbar-dark bg-dark shadow-lg mb-4 sticky-top"
+      class="navbar navbar-expand-lg navbar-dark bg-dark shadow-lg sticky-top"
     >
       <div class="container">
-        <a class="navbar-brand" href="#">
-          <h2>Cari Mandor</h2>
-        </a>
+        <a class="navbar-brand" href="#"><h2>Cari Mandor</h2></a>
         <button
           class="navbar-toggler"
           type="button"
@@ -65,29 +64,32 @@
     </nav>
     <!-- NAVBAR END -->
 
-    <div class="container d-flex flex-column align-items-center min-vh-100">
-      <% if(isSuccess){ %>
-      <!-- LOGO / ICON BERHASIL -->
-      <img style="height: 300px; width: 300px" src="/public/oke.png" />
-      <h1><%= message %></h1>
-      <% } else{ %>
-      <img style="height: 300px; width: 300px" src="/public/failed.png" />
-      <!-- LOGO / ICON GAGAL -->
-      <h1><%= message %></h1>
-      <% } %>
-
-      <div>
-        <a href="/wishlistpage/show-my-wishlist" class="btn btn-warning"
-          >Lihat daftar wishlist saya</a
-        >
-        <a href="/search/search-list-services" class="btn btn-warning"
-          >Lihat semua jasa</a
-        >
+    <!-- CONTENT START -->
+    <div class="container">
+      <div class="title mt-5">
+        <h1><%= service.title %></h1>
       </div>
+
+      <div class="thumbnail mb-4 mt-4">
+        <img src="<%= service.photo %>" class="img-fluid" alt="" />
+      </div>
+      <p>Deskripsi : <%= service.description %></p>
+      <p>Kategori : <%= service.category %></p>
+      <p>Sub Kategori : <%= service.sub_category %></p>
+      <p><%= service.status %> : <%= service.price %></p>
+      <p>
+        <a href="<% service.link_portofolio %>">portofolio</a>
+      </p>
+      <a
+        class="btn btn-warning mb-4"
+        href="/transactionpage/add-transaction-form/<%= service.id %>"
+        >Buat transaksi</a
+      >
     </div>
+    <!-- CONTENT END -->
 
     <!-- FOOTER START -->
-    <footer class="bg-dark text-center text-white sticky-bottom">
+    <footer class="bg-dark text-center text-white">
       <!-- Grid container -->
       <div class="container p-4 pb-0">
         <!-- Section: Social media -->

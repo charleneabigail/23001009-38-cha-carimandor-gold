@@ -7,13 +7,11 @@ class ServiceController {
     static async showListServices(req, res) {
         try {
             const dataServices = await db('services').select('*');
-            res.status(200).json(dataServices); //return bisa dihapus karena langsung respon
-            // res.render('servicePage', {dataServices})
+            res.status(200).json(dataServices); 
         } catch (error) {
             res.status(500).json(error)
         }
     }
-    // pakai res.render =======> dibuat di PAGE CONTROLLER
 
 
     // 2. MENAMBAHKAN SERVICE (MENYIMPAN DATA KE DATABASE)
@@ -43,7 +41,7 @@ class ServiceController {
             }
 
             const data = await db('services').insert(inputUser).returning('*')
-            return res.status(201).json({
+            res.status(201).json({
                 message : 'Berhasil menambahkan service!',
                 data
             })
@@ -79,7 +77,7 @@ class ServiceController {
             }
 
             const data = await db('services').update(inputUser).where({id : id}).returning('*');
-            return res.status(200).json({
+            res.status(200).json({
                 message : 'Update service berhasil!',
                 data,
             });
@@ -89,7 +87,6 @@ class ServiceController {
     }
 
     // 4. MENGHAPUS SERVICE DARI DATABASE
-    // bagaimana cara handle supaya hanya seller yg membuat service yang bisa menghapus servicenya? NANTI DI SETTING DI FRONTEND
     static async deleteService(req, res) {
         try {
             let id = req.params.id;
@@ -103,7 +100,7 @@ class ServiceController {
             }
 
             const data = await db('services').del(id).where({id: id, id_seller : id_seller}).returning('id')
-            return res.status(200).json({
+            res.status(200).json({
                 message : `Delete service dengan id ${id} berhasil!`,
                 data
             });

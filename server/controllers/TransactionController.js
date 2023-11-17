@@ -14,7 +14,7 @@ class TransactionController {
             }
 
             const dataTransaction = await db('transactions').select('*');
-            return res.status(200).json(dataTransaction);
+            res.status(200).json(dataTransaction);
         } catch (error) {
             res.status(500).json(error)
         }
@@ -57,12 +57,11 @@ class TransactionController {
             
             await db('wishlist').del().where({id_customer:id_customer, id_seller : id_seller, id_service : id_service}); // auto hapus wishlist ketika transaksi dibuat
             
-            return res.status(201).json({
+            res.status(201).json({
                 message : 'Berhasil menambahkan transaksi!',
                 data
             })
             
-
         } catch (error) {
             res.status(500).json(error)
         }
@@ -79,7 +78,7 @@ class TransactionController {
             }
 
             const data = await db('transactions').update(input).where({id : id_transaction});
-            return res.status(200).json({
+            res.status(200).json({
                 message : 'payment success'
             })
 
@@ -99,7 +98,7 @@ class TransactionController {
             }
 
             await db('transactions').update(input).where({id : id_transaction});
-            return res.status(200).json({
+            res.status(200).json({
                 message : 'payment failed'
             })
 
@@ -126,7 +125,7 @@ class TransactionController {
             }
 
             await db('transactions').update(inputUser).where({id : id, id_customer : id_customer});
-            return res.status(200).json({
+            res.status(200).json({
                 message : 'Transaction canceled'
             })
 
@@ -152,7 +151,7 @@ class TransactionController {
                 })
             }
             await db('transactions').update(inputUser).where({id : id, id_seller : id_seller});
-            return res.status(200).json({
+            res.status(200).json({
                 message : 'Transaction canceled'
             })
 

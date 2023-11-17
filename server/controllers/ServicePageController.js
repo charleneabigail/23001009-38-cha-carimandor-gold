@@ -5,14 +5,11 @@ class ServicePageController {
   static async showListServices(req, res) {
     try {
       const myServices = await db("services").select("*").where({id_seller: req.session.user.id});
-      console.log(myServices, "=======> myServices");
-      // return res.status(200).json(dataServices); //return bisa dihapus karena langsung respon
       res.render('showMyServicePage', { myServices });
     } catch (error) {
         res.render('showMyServicePage', {
           isSuccess: false,
           message : 'Internal server error'})
-        //res.status(500).json(error);
     }
   }
 
@@ -45,23 +42,14 @@ class ServicePageController {
         updated_at: new Date(),
       };
 
-      // const findUser = await db("user").where({ id: id_seller });  =======> TIDAK PERLU LAGI KARENA SUDAH DIHANDLE SESSION
-      // if (!findUser.length) {
-      //   return res.render("addServiceResultPage", {
-      //     isSuccess: false,
-      //     message: "User tidak ditemukan",
-      //   });
-      // }
-
       await db("services").insert(inputUser).returning("*");
-      return res.render("addServiceResultPage", {
+      res.render("addServiceResultPage", {
         isSuccess: true,
         message: "Service berhasil ditambahkan.",
       });
     } catch (error) {
       console.log(error);
-      console.log(error);
-      return res.render("addServiceResultPage", {
+      res.render("addServiceResultPage", {
         isSuccess: false,
         message: "Internal server error.",
       });
@@ -110,7 +98,7 @@ class ServicePageController {
 
           const updateService = await db('services').update(inputUser).where({id : id}).returning('*');
           console.log(updateService);
-          return res.render ('updateServiceResultPage', {
+          res.render ('updateServiceResultPage', {
             isSuccess : true,
             message : 'Update service berhasil'
           })
@@ -131,16 +119,8 @@ class ServicePageController {
           let id = req.params.id;
           let id_seller = req.session.user.id
 
-          // const findUser = await db('services').select('*').where({id : id, id_seller : id_seller}); ===> SUDAH DIHANDLE SESSION
-          // if (!findUser.length) {
-          //     return res.render ('deleteServiceResultPage', {
-          //       isSuccess : false,
-          //       message : 'Data tidak ditemukan'
-          //     })
-          // }
-
           const data = await db('services').del(id).where({id: id, id_seller : id_seller}).returning('id')
-          return res.render ('deleteServiceResultPage', {
+          res.render ('deleteServiceResultPage', {
             isSuccess : true,
             message : `Delete service dengan id ${id} berhasil!`
           })
@@ -153,6 +133,19 @@ class ServicePageController {
       }
   }
 
+  // 5. MENAMPILKAN HALAMAN DETAIL SERVICE
+  static async showDetailServicePage(req, res) {
+    try {
+      const detailService = await db("services").select('*').where({id : req.params.id});
+      res.render("showDetailServicePage", {
+        service : detailService[0]
+      });
+    } catch (error) {
+      res.render("showDetailServicePage", {
+        service : detailService[0]
+      });
+    }
+  }
 
   
 }
