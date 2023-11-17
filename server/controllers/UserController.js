@@ -1,5 +1,3 @@
-// const dbUser = require("../db/user.json");
-// const fs = require("fs");
 const db = require("../db");
 
 class UserController {
@@ -73,13 +71,13 @@ class UserController {
           });
         } else {
           console.log("password anda salah!");
-          return res.status(400).json({
+          res.status(400).json({
             message: "password anda salah",
           });
         }
       } else {
         console.log(`akun dengan email ${email} belum terdaftar!`);
-        return res.status(404).json({
+        res.status(404).json({
           message: "anda belum terdaftar",
         });
       }
@@ -111,7 +109,7 @@ class UserController {
         })
         .returning("*");
 
-      return res.status(200).json({
+      res.status(200).json({
         message: "Update profile berhasil!",
         data,
       });
@@ -129,7 +127,7 @@ class UserController {
         id: id,
       }).returning('id');
       console.log(data, "=====> data");
-      return res.status(200).json({
+      res.status(200).json({
         message: `Delete profil dengan id ${id} berhasil!`,
       });
       

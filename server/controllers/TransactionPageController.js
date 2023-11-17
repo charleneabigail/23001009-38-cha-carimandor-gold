@@ -15,7 +15,7 @@ class TransactionPageController {
         });
       }
 
-      return res.render("addTransactionFormPage", {
+      res.render("addTransactionFormPage", {
         isSuccess: true,
         service: findService[0],
       });
@@ -69,13 +69,6 @@ class TransactionPageController {
         updated_at: new Date(),
       };
 
-      // const findUser = await db('user').where({id: id_customer}); =======> SUDAH DIHANDLE SESSION
-      // if (!findUser.length) {
-      //     return res.status(404).json({
-      //         message : 'User not found'
-      //     })
-      // }
-
       const data = await db("transactions").insert(inputUser).returning("*");
 
       await db("wishlist").del().where({
@@ -84,7 +77,7 @@ class TransactionPageController {
         id_service: id_service,
       }); // auto hapus wishlist ketika transaksi dibuat
 
-      return res.render('addTransactionResultPage', {
+      res.render('addTransactionResultPage', {
         isSuccess: true,
         message: "Berhasil menambahkan transaksi!",
         data,
@@ -105,6 +98,8 @@ class TransactionPageController {
       .select(['transactions.id', 'services.title'])
       .join('services', 'transactions.id_service', '=', 'services.id')
       .where({'transactions.id_customer': req.session.user.id})
+      .orderBy('transactions.updated_at', 'desc')
+      
       console.log(myTransaction, '=====> myTransaction');
       res.render('showMyTransactionPage', {myTransaction})
     } catch (error) {

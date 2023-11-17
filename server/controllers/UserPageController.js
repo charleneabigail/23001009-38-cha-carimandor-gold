@@ -17,7 +17,7 @@ class UserPageController {
     try {
       const dataUser = await db("user").select("*");
       console.log(dataUser);
-      return res.render("listUserPage", { dataUser });
+      res.render("listUserPage", { dataUser });
     } catch (error) {
       res.render("listUserPage", {
         message: "Internal server error",
@@ -46,7 +46,7 @@ class UserPageController {
         updated_at: new Date(),
       };
       const data = await db("user").insert(inputUser).returning("*");
-      return res.render("registerFormResultPage", {
+      res.render("registerFormResultPage", {
         isSuccess: true,
         message: "Register berhasil",
       });
@@ -81,7 +81,7 @@ class UserPageController {
         .where({
           email: email,
         })
-        .select(["password", "id"]);
+        .select('*');
       console.log(data, "=======> ini data password dan id customer");
 
       if (data.length) {
@@ -90,20 +90,22 @@ class UserPageController {
           req.session.user = {
               id: data[0].id
             }
-          return res.render("loginFormResultPage", {
+
+          res.render("loginFormResultPage", {
             isSuccess: true,
+            role: data[0].role,
             message: "Login berhasil",
           });
         } else {
           console.log("password anda salah!");
-          return res.render("loginFormResultPage", {
+            res.render("loginFormResultPage", {
             isSuccess: false,
             message: "password anda salah",
           });
         }
       } else {
         console.log(`akun dengan email ${email} belum terdaftar!`);
-        return res.render("loginFormResultPage", {
+        res.render("loginFormResultPage", {
           isSuccess: false,
           message: "anda belum terdaftar",
         });
@@ -149,7 +151,7 @@ class UserPageController {
         })
         .returning("*");
 
-      return res.render("editUserResultPage", {
+      res.render("editUserResultPage", {
         isSuccess: true,
         message: "Update profile berhasil",
       });
@@ -174,7 +176,7 @@ class UserPageController {
         })
         .returning("id");
       console.log(data, "=====> data");
-      return res.render("deleteUserResultPage", {
+      res.render("deleteUserResultPage", {
         isSuccess: true,
         message: `Delete profil dengan id ${id} berhasil!`,
       });

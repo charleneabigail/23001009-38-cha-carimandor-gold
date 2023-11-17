@@ -13,7 +13,7 @@ class WishlistController {
                 })
             }
             const dataWishlist = await db('wishlist').where({id_customer : id_customer}); 
-            return res.status(200).json(dataWishlist);
+            res.status(200).json(dataWishlist);
             
         } catch (error) {
             res.status(500).json(error)
@@ -50,7 +50,7 @@ class WishlistController {
             }
 
             const data = await db('wishlist').insert(inputUser).returning('*');
-            return res.status(201).json({
+            res.status(201).json({
                 message : 'Berhasil menambahkan wishlist!',
                 data
             })
@@ -81,7 +81,7 @@ class WishlistController {
                 })
             }
             const data = await db('wishlist').update(inputUser).where({id: id, id_customer: id_customer}).returning('*');
-            return res.status(200).json({
+            res.status(200).json({
                 message : 'Update wishlist berhasil!',
                 data,
             });
@@ -104,7 +104,7 @@ class WishlistController {
             }
 
             const data = await db('wishlist').del(id).where({id: id}).returning('id');
-            return res.status(200).json({
+            res.status(200).json({
                 message : `Delete wishlist dengan id ${id} berhasil!`,
                 data
             });

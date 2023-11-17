@@ -14,13 +14,6 @@ class WishlistPageController {
         // note_from_customer,
       } = req.params;
 
-      //   const findUser = await db("user").where({ id: id_customer });   ====> TIDAK DIPERLUKAN LAGI KARENA SUDAH DIHANDLE SESSION
-      //   if (!findUser.length) {
-      //     return res.status(404).json({
-      //       message: "User not found",
-      //     });
-      //   }
-
       const findService = await db("services").where({
         // id_seller: id_seller,
         id: id_service,
@@ -45,7 +38,7 @@ class WishlistPageController {
       console.log(inputUser);
 
       const data = await db("wishlist").insert(inputUser).returning("*");
-      return res.render("addWishlistResultPage", {
+      res.render("addWishlistResultPage", {
         isSuccess: true,
         message: "Berhasil menambahkan wishlist!",
         data,
@@ -63,13 +56,16 @@ class WishlistPageController {
   static async showMyWishlistPage(req, res) {
     try {
         const myWishlist = await db("wishlist")
-          .select(['wishlist.id', 'services.title'])
+          .select(['wishlist.id', 'services.title', 'wishlist.id_service'])
           .join("services", "wishlist.id_service", "=", "services.id")
-          .where({ 'wishlist.id_customer': req.session.user.id });
-    
-          console.log('join ', myWishlist)
+          .where({ 'wishlist.id_customer': req.session.user.id })
+          .orderBy('wishlist.updated_at', 'desc');
+
+          console.log(myWishlist,'=====>myWishlist');
+
         res.render("showMyWishlistPage", { myWishlist });
       } catch (error) {
+        console.log(error);
         res.render("showMyWishlistPage", {
           isSuccess: false,
           message: "Internal server error",
@@ -83,16 +79,8 @@ class WishlistPageController {
       const id_customer = req.session.user.id;
       let id = req.params.id;
 
-      // let id_customer = req.query.id_customer ============> TIDAK PERLU LAGI KARENA SUDAH DIHANDLE SESSION
-      // const findUser = await db('wishlist').select('*').where({id : id, id_customer : id_customer});
-      // if (!findUser.length) {
-      //     return res.status(404).json({
-      //         message : 'Data not found'
-      //     })
-      // }
-
       await db("wishlist").del(id).where({ id: id, id_customer }).returning("id");
-      return res.render("deleteWishlistResultPage", {
+      res.render("deleteWishlistResultPage", {
         isSuccess: true,
         message: `Delete wishlist dengan id ${id} berhasil!`,
       });

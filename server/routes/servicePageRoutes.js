@@ -14,6 +14,6 @@ routes.post('/update-service-result/:id', ServicePageController.updateServicePag
 
 routes.get('/delete-service-result/:id', ServicePageController.deleteServicePage) // di browser gak bisa pake delete
 
-
+routes.get('/detail-service-page/:id', ServicePageController.showDetailServicePage)
 
 module.exports = routes;
